@@ -1,0 +1,161 @@
+{
+    "categories": [
+      {
+        "id": "category_1",
+        "name": "CSPM Executive Dashboard",
+        "widgets": [
+          {
+            "id": "widget_1",
+            "name": "Security Posture",
+            "text": "Security posture details here.",
+            "data": {
+              "labels": [
+                "connected",
+                "not-Connected"
+              ],
+              "datasets": {
+                "data": [
+                  2,
+                  2
+                ],
+                "backgroundColor": [
+                  "#4A90E2",
+                  "#D8D8D8"
+                ],
+                "hoverOffset": 4
+              }
+            }
+          },
+          {
+            "id": "widget_2",
+            "name": "Compliance Overview",
+            "text": "Compliance overview details here.",
+            "data": {
+              "labels": [
+                "Failed",
+                "Warning",
+                "Not available",
+                "Passed"
+              ],
+              "datasets": {
+                "data": [
+                  1689,
+                  681,
+                  150,
+                  7253
+                ],
+                "backgroundColor": [
+                  "#E57373",
+                  "#FFB74D",
+                  "#90A4AE",
+                  "#81C784"
+                ],
+                "hoverOffset": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "category_2",
+        "name": "CWPP Dashboard",
+        "widgets": [
+          {
+            "id": "widget_1",
+            "name": "2nd widget name",
+            "text": "2nd Widget Text.",
+            "data": {
+              "labels": [
+                "Category A",
+                "Category B"
+              ],
+              "datasets": {
+                "data": [
+                  5,
+                  10
+                ],
+                "backgroundColor": [
+                  "#FF6384",
+                  "#36A2EB"
+                ],
+                "hoverOffset": 4
+              }
+            }
+          },
+          {
+            "id": "widget_2",
+            "name": "Compliance Overview",
+            "text": "Compliance overview details here.",
+            "data": {
+              "labels": [
+                "Passed",
+                "Failed"
+              ],
+              "datasets": {
+                "data": [
+                  750,
+                  1250
+                ],
+                "backgroundColor": [
+                  "#81C784",
+                  "#E57373"
+                ],
+                "hoverOffset": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "category_3",
+        "name": "Registry Scan",
+        "widgets": [
+          {
+            "id": "widget_1",
+            "name": "3rd Widget name",
+            "text": "3rd Widget Text.",
+            "data": {
+              "labels": [
+                "Available",
+                "Unavailable"
+              ],
+              "datasets": {
+                "data": [
+                  8,
+                  2
+                ],
+                "backgroundColor": [
+                  "#FFCE56",
+                  "#FF6384"
+                ],
+                "hoverOffset": 4
+              }
+            }
+          },
+          {
+            "id": "widget_2",
+            "name": "3rd Widget",
+            "text": "3rd widget Text.",
+            "data": {
+              "labels": [
+                "Completed",
+                "Pending"
+              ],
+              "datasets": {
+                "data": [
+                  15,
+                  5
+                ],
+                "backgroundColor": [
+                  "#36A2EB",
+                  "#FFCE56"
+                ],
+                "hoverOffset": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
