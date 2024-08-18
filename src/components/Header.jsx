@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
 import { FiPlus, FiRefreshCw, FiMoreVertical, FiEye } from 'react-icons/fi';
 import Sidebar from './Sidebar';
+import { useDashboardContext } from '../Context/DashboardContext';
 
 const Header = () => {
+   
+  const { state, dispatch } = useDashboardContext();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleRemoveWidget = (categoryId, widgetId) => {
+    dispatch({ type: 'REMOVE_WIDGET', payload: { categoryId, widgetId } });
+  };
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
+
+  
 
   return (
     <div className="relative">
@@ -34,7 +43,7 @@ const Header = () => {
       </div>
 
       {/* Drawer */}
-      <Sidebar isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
+      <Sidebar isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} categories={state.categories} handleRemoveWidget={handleRemoveWidget}  />
     </div>
   );
 };
