@@ -1,30 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useDashboardContext } from "../Context/DashboardContext";
 
-const Sidebar = ({ isDrawerOpen, toggleDrawer, categories, handleRemoveWidget }) => {
-  const [selectedTab, setSelectedTab] = useState(categories[0]?.id); // Initialize with the first category ID
+const Sidebar = ({ isDrawerOpen, toggleDrawer, handleRemoveWidget }) => {
+  const { state, dispatch } = useDashboardContext();
+  const { categories } = state;
+
+  const [selectedTab, setSelectedTab] = useState(categories[0]?.id);
   const [selectedWidgets, setSelectedWidgets] = useState({});
+
+  useEffect(() => {
+    const initialSelectedWidgets = {};
+    categories.forEach((category) => {
+      category.widgets.forEach((widget) => {
+        initialSelectedWidgets[widget.id] = widget.checked || false;
+      });
+    });
+    setSelectedWidgets(initialSelectedWidgets);
+  }, [categories]);
 
   const handleCheckboxChange = (event, widgetId) => {
     const { checked } = event.target;
-    setSelectedWidgets((prevState) => ({
-      ...prevState,
+    const updatedWidgets = {
+      ...selectedWidgets,
       [widgetId]: checked,
-    }));
+    };
+
+    setSelectedWidgets(updatedWidgets);
+
+    dispatch({
+      type: "UPDATE_WIDGET_CHECKED_STATUS",
+      payload: { categoryId: selectedTab, widgetId, checked },
+    });
   };
 
   const handleTabChange = (tabId) => {
     setSelectedTab(tabId);
   };
 
-  const currentCategory = categories.find((category) => category.id === selectedTab);
+  const currentCategory = categories.find(
+    (category) => category.id === selectedTab
+  );
 
   return (
     <div>
       {/* Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-1/3 bg-white shadow-lg transform ${
-          isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
-        } transition-transform duration-300 ease-in-out`}
+        className={`fixed top-0 right-0 h-full w-full md:w-1/3 bg-white shadow-lg transform ${
+          isDrawerOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out z-50`}
       >
         <div className="flex flex-col h-full">
           {/* Drawer Header */}
@@ -38,16 +61,16 @@ const Sidebar = ({ isDrawerOpen, toggleDrawer, categories, handleRemoveWidget })
           </div>
 
           {/* Tab Navigation */}
-          <div className="flex space-x-4 px-4 py-2 border-b">
+          <div className="flex space-x-4 px-4 py-2 border-b overflow-x-auto">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => handleTabChange(category.id)}
                 className={`${
                   selectedTab === category.id
-                    ? 'text-blue-800 border-b-2 border-blue-800'
-                    : 'text-gray-500'
-                }`}
+                    ? "text-blue-800 border-b-2 border-blue-800"
+                    : "text-gray-500"
+                } whitespace-nowrap`}
               >
                 {category.name}
               </button>
@@ -71,7 +94,9 @@ const Sidebar = ({ isDrawerOpen, toggleDrawer, categories, handleRemoveWidget })
                   />
                   <span>{widget.name}</span>
                   <button
-                    onClick={() => handleRemoveWidget(currentCategory.id, widget.id)}
+                    onClick={() =>
+                      handleRemoveWidget(currentCategory.id, widget.id)
+                    }
                     className="text-red-700 underline"
                   >
                     delete
@@ -103,7 +128,7 @@ const Sidebar = ({ isDrawerOpen, toggleDrawer, categories, handleRemoveWidget })
       {isDrawerOpen && (
         <div
           className="fixed inset-0 bg-black opacity-60"
-          style={{ clipPath: 'inset(0 33.33% 0 0)' }}
+          style={{ clipPath: "inset(0 0 0 0)" }}
           onClick={toggleDrawer}
         ></div>
       )}

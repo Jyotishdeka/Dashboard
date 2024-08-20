@@ -4,7 +4,6 @@ import Sidebar from './Sidebar';
 import { useDashboardContext } from '../Context/DashboardContext';
 
 const Header = () => {
-   
   const { state, dispatch } = useDashboardContext();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -12,18 +11,23 @@ const Header = () => {
     dispatch({ type: 'REMOVE_WIDGET', payload: { categoryId, widgetId } });
   };
 
+  const updateWidgetCheckedStatus = (categoryId, widgetId, checked) => {
+    dispatch({
+      type: 'UPDATE_WIDGET_CHECKED_STATUS',
+      payload: { categoryId, widgetId, checked },
+    });
+  };
+
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  
-
   return (
     <div className="relative">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 bg-slate-300 shadow-sm">
-        <h1 className="text-lg text-black font-bold">CNAPP Dashboard</h1>
-        <div className="flex items-center space-x-4">
+      <div className="flex flex-col sm:flex-row items-center justify-between p-4 bg-slate-300 shadow-sm">
+        <h1 className="text-lg text-black font-bold mb-2 sm:mb-0">CNAPP Dashboard</h1>
+        <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
           <button
             onClick={toggleDrawer}
             className="flex items-center px-3 py-1 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded"
@@ -43,7 +47,13 @@ const Header = () => {
       </div>
 
       {/* Drawer */}
-      <Sidebar isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} categories={state.categories} handleRemoveWidget={handleRemoveWidget}  />
+      <Sidebar
+        isDrawerOpen={isDrawerOpen}
+        toggleDrawer={toggleDrawer}
+        categories={state.categories}
+        handleRemoveWidget={handleRemoveWidget}
+        updateWidgetCheckedStatus={updateWidgetCheckedStatus}
+      />
     </div>
   );
 };

@@ -13,7 +13,7 @@ const Widget = ({ widget }) => {
 
   const { labels, datasets } = widgetData;
 
-  console.log(widget.widget.data);
+  
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4">

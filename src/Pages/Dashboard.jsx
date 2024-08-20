@@ -7,6 +7,8 @@ import { useDashboardContext } from "../Context/DashboardContext";
 const Dashboard = () => {
   const { state, dispatch } = useDashboardContext();
 
+  console.log(state);
+
   return (
     <div>
       <Navbar />

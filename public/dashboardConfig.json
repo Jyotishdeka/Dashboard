@@ -8,6 +8,7 @@
             "id": "widget_1",
             "name": "Security Posture",
             "text": "Security posture details here.",
+            "checked": true,
             "data": {
               "labels": [
                 "connected",
@@ -30,6 +31,7 @@
             "id": "widget_2",
             "name": "Compliance Overview",
             "text": "Compliance overview details here.",
+            "checked": true,
             "data": {
               "labels": [
                 "Failed",
@@ -62,8 +64,9 @@
         "widgets": [
           {
             "id": "widget_1",
-            "name": "2nd widget name",
+            "name": "Top 5 Namespace specific Alert  ",
             "text": "2nd Widget Text.",
+            "checked": true,
             "data": {
               "labels": [
                 "Category A",
@@ -84,8 +87,9 @@
           },
           {
             "id": "widget_2",
-            "name": "Compliance Overview",
-            "text": "Compliance overview details here.",
+            "name": "Workload Alert",
+            "text": "@nd Widget Text.",
+            "checked": true,
             "data": {
               "labels": [
                 "Passed",
@@ -112,8 +116,9 @@
         "widgets": [
           {
             "id": "widget_1",
-            "name": "3rd Widget name",
+            "name": "Image Risk Assessment",
             "text": "3rd Widget Text.",
+            "checked": true,
             "data": {
               "labels": [
                 "Available",
@@ -134,8 +139,9 @@
           },
           {
             "id": "widget_2",
-            "name": "3rd Widget",
+            "name": "Image Security Issus",
             "text": "3rd widget Text.",
+            "checked": true,
             "data": {
               "labels": [
                 "Completed",
