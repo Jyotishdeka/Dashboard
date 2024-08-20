@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaChevronRight, FaSearch } from "react-icons/fa";
 import { useDashboardContext } from "../Context/DashboardContext";
+import MyImage from '../assets/a.png'; 
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -69,7 +70,7 @@ const Navbar = () => {
               <div className="w-10 rounded-full">
                 <img
                   alt="User avatar"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  src={MyImage}
                 />
               </div>
             </div>

@@ -17,6 +17,15 @@ Tailwind CSS: Utility-first CSS framework for styling.
 DaisyUI: UI components for Tailwind CSS.
 React Context API: Manage and share global state across components.
 
+ Used libraries---
+
+  DaisyUi
+  Tailwind CSS
+  ChartJS
+  React-chartjs2
+  React Icon
+  uuid
+  
 
 
 Installation....
